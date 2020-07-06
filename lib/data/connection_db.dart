@@ -44,14 +44,14 @@ class DbService {
 
     final List<Map<String, dynamic>> maps = await db.query('todos');
 
-    List<TodoStore> listContact = List();
-    for(Map m in maps){
+    List<TodoStore> todoList = List();
+    for (Map m in maps) {
       TodoStore todo = TodoStore(TodoNote.fromMap(m));
       todo.done = TodoNote.fromMap(m).done == 1 ? true : false;
-      listContact.add(todo);
+      todoList.add(todo);
     }
 
-    return listContact;
+    return todoList;
   }
 
   Future<void> update(TodoNote todo) async {
